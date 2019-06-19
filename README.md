@@ -2,7 +2,7 @@
 # ssd_pytorch
 ====
 
-Overview
+## Overview
 
 Icon detection software in car multimedia systems using ssd and pytorch
 
@@ -40,6 +40,13 @@ OS: Ubuntu 16.04 LTS
 
 ## Usage
 
+   1. Clone the code
+   
+   This repository include *pascal-voc-writer*, 
+
+   https://github.com/AndrewCarterUK/pascal-voc-writer
+
+
   `$git clone https://github.com/kobokobo/ssd_pytorch.git`
 
   `$git submodule update --init --recursive`
@@ -47,18 +54,18 @@ OS: Ubuntu 16.04 LTS
   `$git checkout feature/car_navigation`
 
 
+  2. Download base network VGG16 and place it to under *weights* directory
+  
+  `$wget https://s3.amazonaws.com/amdegroot-models/vgg16_reducedfc.pth`
+
+  `$mv ./vgg16_reducedfc.pth  (you workdirectory)/ssd_pytorch/weights`
+  
 
 
+  3. Data prepartion for VOC format
 
+  place your data under 
+  
+  (you workdirectory)/ssd_pytorch/VOCdevkit/VOC2019/xx_data_creator/00_background
 
-
-## Contribution
-
-## Licence
-
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
-
-## Author
-
-[tcnksm](https://github.com/tcnksm)
 
