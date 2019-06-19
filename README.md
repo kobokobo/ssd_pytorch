@@ -41,31 +41,28 @@ OS: Ubuntu 16.04 LTS
 ## Usage
 
    1. Clone the code
-   
-   This repository include *pascal-voc-writer*, 
+      
+      This repository include *pascal-voc-writer*, 
+      https://github.com/AndrewCarterUK/pascal-voc-writer
 
-   https://github.com/AndrewCarterUK/pascal-voc-writer
+      `$git clone https://github.com/kobokobo/ssd_pytorch.git`
 
+      `$git submodule update --init --recursive`
 
-  `$git clone https://github.com/kobokobo/ssd_pytorch.git`
-
-  `$git submodule update --init --recursive`
-
-  `$git checkout feature/car_navigation`
+      `$git checkout feature/car_navigation`
 
 
   2. Download base network VGG16 and place it to under *weights* directory
   
-  `$wget https://s3.amazonaws.com/amdegroot-models/vgg16_reducedfc.pth`
-
-  `$mv ./vgg16_reducedfc.pth  (you workdirectory)/ssd_pytorch/weights`
-  
+      `$wget https://s3.amazonaws.com/amdegroot-models/vgg16_reducedfc.pth`
+      `$mv ./vgg16_reducedfc.pth  (you workdirectory)/ssd_pytorch/weights`
 
 
   3. Data prepartion for VOC format
+      this process 
 
-  place your data under 
+      place your background under 
   
-  (you workdirectory)/ssd_pytorch/VOCdevkit/VOC2019/xx_data_creator/00_background
+      `(you workdirectory)/ssd_pytorch/VOCdevkit/VOC2019/xx_data_creator/00_background`
 
 
