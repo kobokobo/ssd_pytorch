@@ -23,12 +23,19 @@ if sys.version_info[0] == 2:
 else:
     import xml.etree.ElementTree as ET
 
+'''
 VOC_CLASSES = (  # always index 0
     'aeroplane', 'bicycle', 'bird', 'boat',
     'bottle', 'bus', 'car', 'cat', 'chair',
     'cow', 'diningtable', 'dog', 'horse',
     'motorbike', 'person', 'pottedplant',
     'sheep', 'sofa', 'train', 'tvmonitor')
+'''
+
+## TODO::kobo
+VOC_CLASSES = (  # always index 0
+    'icona', 'iconb')
+
 
 # handbook
 # note: if you used our download scripts, this should be right
@@ -67,11 +74,15 @@ class VOCAnnotationTransform(object):
         Returns:
             a list containing lists of bounding boxes  [bbox coords, class name]
         """
+
+
+
         res = []
         for obj in target.iter('object'):
             difficult = int(obj.find('difficult').text) == 1
             if not self.keep_difficult and difficult:
                 continue
+
             name = obj.find('name').text.lower().strip()
             bbox = obj.find('bndbox')
 
@@ -84,6 +95,8 @@ class VOCAnnotationTransform(object):
                 cur_pt = cur_pt / width if i % 2 == 0 else cur_pt / height
                 # bndboxに正解座標をセット
                 bndbox.append(cur_pt)
+
+
             label_idx = self.class_to_ind[name]
             # 正解座標の後に正解ラベルのインデックスをセット
             bndbox.append(label_idx)
@@ -112,7 +125,9 @@ class VOCDetection(data.Dataset):
 
     def __init__(self, root,
                 # handbook
-                image_sets=[('2007', 'trainval'), ('2012', 'trainval')],
+                ## TODO::kobo
+                image_sets=[('2019', 'trainval')],
+                ## org## image_sets=[('2007', 'trainval'), ('2012', 'trainval')],
                 #image_sets=[('2007', 'trainval')],
                 # handbook
                 transform=None, target_transform=VOCAnnotationTransform(),
@@ -121,6 +136,7 @@ class VOCDetection(data.Dataset):
         self.image_set = image_sets
         self.transform = transform
         self.target_transform = target_transform
+
         self.name = dataset_name
         self._annopath = osp.join('%s', 'Annotations', '%s.xml')
         self._imgpath = osp.join('%s', 'JPEGImages', '%s.jpg')
@@ -139,8 +155,8 @@ class VOCDetection(data.Dataset):
         return len(self.ids)
 
     def pull_item(self, index):
-        img_id = self.ids[index]
 
+        img_id = self.ids[index]
         target = ET.parse(self._annopath % img_id).getroot()
         img = cv2.imread(self._imgpath % img_id)
         height, width, channels = img.shape

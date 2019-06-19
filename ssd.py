@@ -38,7 +38,11 @@ class SSD(nn.Module):
         super(SSD, self).__init__()
         self.phase = phase
         self.num_classes = num_classes
-        self.cfg = (coco, voc)[num_classes == 21]
+
+        ## TODO::kobo
+        # self.cfg = (coco, voc)[num_classes == 21]
+        self.cfg = (coco, voc)[num_classes == 3]
+
         self.priorbox = PriorBox(self.cfg)
         # handbook
         # self.priors = Variable(self.priorbox.forward(), volatile=True)
@@ -49,7 +53,11 @@ class SSD(nn.Module):
         # SSD network
         self.vgg = nn.ModuleList(base)
         # Layer learns to scale the l2 normalized features from conv4_3
+
+        ## TODO::kobo
         self.L2Norm = L2Norm(512, 20)
+        #self.L2Norm = L2Norm(512, 2)
+
         self.extras = nn.ModuleList(extras)
         # オフセットと確信度のネットワークリスト
         self.loc = nn.ModuleList(head[0])
@@ -191,7 +199,9 @@ def add_extras(cfg, i, batch_norm=False):
 def multibox(vgg, extra_layers, cfg, num_classes):
     loc_layers = []
     conf_layers = []
+
     vgg_source = [21, -2]
+    
     # ベースの21のConv4-3と-2(最後から2番目)のConv7を特徴マップのリストに追加
     for k, v in enumerate(vgg_source):
         # 出力層の数はアスペクト比の数×座標数
@@ -227,7 +237,9 @@ mbox = {
 }
 
 # ネットワークのリスト作成
-def build_ssd(phase, size=300, num_classes=21):
+## TODO::kobo
+def build_ssd(phase, size=300, num_classes=3):
+# def build_ssd(phase, size=300, num_classes=21):
     if phase != "test" and phase != "train":
         print("ERROR: Phase: " + phase + " not recognized")
         return
