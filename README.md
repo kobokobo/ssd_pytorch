@@ -99,7 +99,7 @@ OS: Ubuntu 16.04 LTS
         * Step.2) Setting up for Training SSD network
         * Step.3) Training SSD network
       
-    After training, you will recieved the network weights file (VOC.pth, located in (WD)/ssd_pytorch/weights)
+      After training, you will recieved the network weights file (VOC.pth, located in (WD)/ssd_pytorch/weights)
 
   
   5. Operation precedure
