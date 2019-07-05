@@ -34,8 +34,20 @@ VOC_CLASSES = (  # always index 0
 
 ## TODO::kobo
 VOC_CLASSES = (  # always index 0
-    'icona', 'iconb')
-
+   'zoom','search','orientation_n','voice','more_options','flag','delete',
+   'return','suggestions','cap_q','cap_w','cap_e','cap_r','cap_t','cap_y','cap_u',
+   'cap_i','cap_o','cap_p','cap_a','cap_s','cap_d','cap_f','cap_g','cap_h',
+   'cap_j','cap_k','cap_l','cap_z','cap_x','cap_c','cap_v','cap_b','cap_n','cap_m',
+   'menu_map_1','menu_audio_1','menu_phone_1','menu_apps_1',
+   'menu_info_1','menu_setup_1','menu_display_1','source',
+   'am','fm','dab','usb','bluetooth','mircast','reorder','incar','estore',
+   'media','coyote','pause_guidance','traffic','fuel','parking','route',
+   'zoom','search','orientation','voice_on','more','on_route','all',
+   'detoured','back','up','down','voice_off','orientation_3d','orientation_2d',
+   'zoom','zoom_in','zoom_out','zoom_scale','menu_map_2','menu_audio_2',
+   'menu_phone_2','menu_apps_2','menu_info_2','menu_setup_2','menu_display_2',
+   'dash','invshift','change_type','input_entry','space','search',
+   'detour_menu','phone_bar','actual_position')
 
 # handbook
 # note: if you used our download scripts, this should be right

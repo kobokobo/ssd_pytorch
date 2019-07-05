@@ -41,7 +41,7 @@ class SSD(nn.Module):
 
         ## TODO::kobo
         # self.cfg = (coco, voc)[num_classes == 21]
-        self.cfg = (coco, voc)[num_classes == 3]
+        self.cfg = (coco, voc)[num_classes == 118]
 
         self.priorbox = PriorBox(self.cfg)
         # handbook
@@ -238,7 +238,7 @@ mbox = {
 
 # ネットワークのリスト作成
 ## TODO::kobo
-def build_ssd(phase, size=300, num_classes=3):
+def build_ssd(phase, size=300, num_classes=118):
 # def build_ssd(phase, size=300, num_classes=21):
     if phase != "test" and phase != "train":
         print("ERROR: Phase: " + phase + " not recognized")

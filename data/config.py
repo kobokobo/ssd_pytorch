@@ -20,7 +20,7 @@ MEANS = (104, 117, 123)
 
 ## TODO::kobo
 voc = {
-    'num_classes': 3,
+    'num_classes': 118,
     # handbook
     #'lr_steps': (80000, 100000, 120000),
     #'max_iter': 120000,
